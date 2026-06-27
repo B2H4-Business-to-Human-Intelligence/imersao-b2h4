@@ -1,0 +1,200 @@
+/* ============================================================
+   APP.JS — lógica da landing page.
+   Você não precisa editar este arquivo no dia a dia.
+   Tudo que muda a cada turma fica em config.js.
+   ============================================================ */
+
+(function () {
+  "use strict";
+
+  const cfg = window.TURMA_CONFIG || {};
+
+  /* ---------- Helpers de formatação ---------- */
+
+  function formatarData(isoDate) {
+    if (!isoDate) return "Em breve";
+    const [ano, mes, dia] = isoDate.split("-").map(Number);
+    const d = new Date(ano, mes - 1, dia);
+    const meses = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+    const diasSemana = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
+    return `${dia} de ${meses[mes - 1]} · ${diasSemana[d.getDay()]}`;
+  }
+
+  function vagasRestantes() {
+    const total = Number(cfg.vagasTotais) || 0;
+    const preenchidas = Number(cfg.vagasPreenchidas) || 0;
+    return Math.max(total - preenchidas, 0);
+  }
+
+  function pctPreenchido() {
+    const total = Number(cfg.vagasTotais) || 1;
+    const preenchidas = Number(cfg.vagasPreenchidas) || 0;
+    return Math.min(Math.round((preenchidas / total) * 100), 100);
+  }
+
+  /* ---------- Monta os valores para cada data-bind ---------- */
+
+  function getBindValues() {
+    const restantes = vagasRestantes();
+    const status = cfg.status || "vagas_abertas";
+
+    let vagasTexto, labelVagas, vagasTextoCurto, ctaInscricaoTexto, tituloInscricaoSecao, labelInscricaoSecao;
+
+    if (status === "esgotada") {
+      vagasTexto = "Turma esgotada";
+      labelVagas = "Status";
+      vagasTextoCurto = "Esgotada";
+      ctaInscricaoTexto = "Entrar na lista de espera";
+      tituloInscricaoSecao = "Turma esgotada. Entre na lista de espera.";
+      labelInscricaoSecao = "Lista de espera";
+    } else if (status === "sem_turma") {
+      vagasTexto = "Em breve";
+      labelVagas = "Próxima turma";
+      vagasTextoCurto = "Em breve";
+      ctaInscricaoTexto = "Avise-me da próxima turma";
+      tituloInscricaoSecao = "Quero ser avisado da próxima turma.";
+      labelInscricaoSecao = "Próxima turma";
+    } else {
+      vagasTexto = `${restantes} de ${cfg.vagasTotais}`;
+      labelVagas = "Vagas restantes";
+      vagasTextoCurto = `${restantes} vagas`;
+      ctaInscricaoTexto = "Garantir minha vaga";
+      tituloInscricaoSecao = "Garanta sua vaga na imersão.";
+      labelInscricaoSecao = "Próxima turma";
+    }
+
+    return {
+      dataFormatada: (status === "sem_turma") ? "A definir" : formatarData(cfg.data),
+      horario: (status === "sem_turma") ? "—" : (cfg.horario || "—"),
+      local: (status === "sem_turma") ? "—" : (cfg.local || "—"),
+      vagasTexto,
+      labelVagas,
+      vagasTextoCurto,
+      ctaInscricaoTexto,
+      tituloInscricaoSecao,
+      labelInscricaoSecao,
+      precoFormatado: (status === "sem_turma") ? "Sob consulta" : (cfg.preco || "Sob consulta"),
+      precoAncoraFormatado: cfg.precoAncora ? `de ${cfg.precoAncora}` : "",
+      progressFill: "", // handled separately (width style)
+      progressTrackVisibility: "",
+    };
+  }
+
+  function aplicarBindings() {
+    const values = getBindValues();
+    document.querySelectorAll("[data-bind]").forEach((el) => {
+      const key = el.getAttribute("data-bind");
+      if (key === "progressFill") {
+        el.style.width = pctPreenchido() + "%";
+        return;
+      }
+      if (key === "progressTrackVisibility") {
+        el.style.display = (cfg.status === "vagas_abertas") ? "" : "none";
+        return;
+      }
+      if (values.hasOwnProperty(key)) {
+        el.textContent = values[key];
+      }
+    });
+  }
+
+  /* ---------- Renderiza depoimentos ---------- */
+
+  function renderDepoimentos() {
+    const container = document.getElementById("depoimentos");
+    if (!container || !Array.isArray(cfg.depoimentos)) return;
+    container.innerHTML = cfg.depoimentos.map((dep) => `
+      <p class="depoimento-texto">"${escapeHtml(dep.texto)}"</p>
+      <p class="depoimento-autor"><strong>${escapeHtml(dep.nome)}</strong> · ${escapeHtml(dep.cargo)}</p>
+    `).join('<div style="height:32px"></div>');
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement("div");
+    div.textContent = str || "";
+    return div.innerHTML;
+  }
+
+  /* ---------- Formulário de inscrição ---------- */
+
+  function setupForm() {
+    const form = document.getElementById("form-inscricao");
+    const errorBox = document.getElementById("form-error");
+    const successBox = document.getElementById("form-success");
+    const submitBtn = document.getElementById("form-submit-btn");
+    if (!form) return;
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      errorBox.hidden = true;
+
+      const data = {
+        nome: form.nome.value.trim(),
+        empresa: form.empresa.value.trim(),
+        cargo: form.cargo.value.trim(),
+        whatsapp: form.whatsapp.value.trim(),
+        email: form.email.value.trim(),
+        gargalo: form.gargalo.value.trim(),
+        turmaData: cfg.data || "",
+        statusTurma: cfg.status || "",
+        origem: "imersao.b2h4.ai",
+        enviadoEm: new Date().toISOString(),
+      };
+
+      // Validação simples
+      if (!data.nome || !data.empresa || !data.cargo || !data.whatsapp || !data.email || !data.gargalo) {
+        showError("Preencha todos os campos antes de enviar.");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        showError("Digite um e-mail válido.");
+        return;
+      }
+
+      const webhookUrl = cfg.webhookUrl;
+      if (!webhookUrl || webhookUrl.indexOf("COLE_AQUI") !== -1) {
+        showError("Formulário ainda não configurado. Veja o GUIA-ATUALIZACAO.md (seção Google Sheets).");
+        console.warn("TURMA_CONFIG.webhookUrl não configurado.");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = "<span>Enviando...</span>";
+
+      try {
+        // Google Apps Script Web Apps esperam 'text/plain' ou form-encoded
+        // para evitar problemas de CORS com JSON + preflight.
+        await fetch(webhookUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(data),
+        });
+
+        form.hidden = true;
+        successBox.hidden = false;
+        successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch (err) {
+        console.error("Erro ao enviar formulário:", err);
+        showError("Não conseguimos enviar agora. Tente novamente ou fale direto pelo contato@b2h4.ai.");
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.hidden = false;
+      errorBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }
+
+  /* ---------- Init ---------- */
+
+  document.addEventListener("DOMContentLoaded", function () {
+    aplicarBindings();
+    renderDepoimentos();
+    setupForm();
+  });
+})();
