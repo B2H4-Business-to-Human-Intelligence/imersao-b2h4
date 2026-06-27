@@ -77,6 +77,7 @@
       precoAncoraFormatado: cfg.precoAncora ? `de ${cfg.precoAncora}` : "",
       progressFill: "", // handled separately (width style)
       progressTrackVisibility: "",
+      deadlineFormatada: (status === "sem_turma") ? "—" : formatarDeadline(cfg.deadlineInscricao),
     };
   }
 
@@ -127,6 +128,9 @@
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       errorBox.hidden = true;
+
+      // Honeypot check
+      if (isBot(form)) return;
 
       const data = {
         nome: form.nome.value.trim(),
@@ -190,11 +194,77 @@
     }
   }
 
+
+  /* ---------- Scroll Animations (IntersectionObserver) ---------- */
+
+  function setupScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  }
+
+  /* ---------- Countdown Timer ---------- */
+
+  function setupCountdown() {
+    const deadline = cfg.deadlineInscricao;
+    if (!deadline) return;
+
+    function updateCountdown() {
+      const now = new Date();
+      const target = new Date(deadline + 'T23:59:59');
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('cd-dias').textContent = '0';
+        document.getElementById('cd-horas').textContent = '0';
+        document.getElementById('cd-min').textContent = '0';
+        document.getElementById('cd-seg').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('cd-dias').textContent = days;
+      document.getElementById('cd-horas').textContent = hours;
+      document.getElementById('cd-min').textContent = minutes;
+      document.getElementById('cd-seg').textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  /* ---------- Deadline Formatada ---------- */
+
+  function formatarDeadline(isoDate) {
+    if (!isoDate) return '—';
+    const [ano, mes, dia] = isoDate.split('-').map(Number);
+    const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    return `${dia} de ${meses[mes - 1]}`;
+  }
+
+  /* ---------- Honeypot anti-spam ---------- */
+
+  function isBot(form) {
+    return form.website && form.website.value;
+  }
+
   /* ---------- Init ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
     aplicarBindings();
     renderDepoimentos();
     setupForm();
+    setupScrollAnimations();
+    setupCountdown();
   });
 })();

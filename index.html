@@ -8,8 +8,98 @@
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Font-size-adjust for CLS stability */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 95%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 100%;
+  ascent-override: 89%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+</style>
 <link rel="stylesheet" href="styles.css">
+
+<!-- ============================================================
+     SEO + SOCIAL + TECHNICAL
+     ============================================================ -->
+
+<!-- Canonical -->
+<link rel="canonical" href="https://imersao.b2h4.ai">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Imersão C-Level · B2H4 — Construa seu Assistente Digital em 4h">
+<meta property="og:description" content="Sua empresa já tem IA. Falta alguém colocar pra operar. 4h presencial, até 12 participantes. Cada C-Level sai com um Assistente Digital próprio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imersao.b2h4.ai">
+<meta property="og:site_name" content="B2H4">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:image" content="https://imersao.b2h4.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imersão C-Level · B2H4 — Construa seu Assistente Digital em 4h">
+<meta name="twitter:description" content="Sua empresa já tem IA. Falta alguém colocar pra operar. 4h presencial, até 12 participantes.">
+<meta name="twitter:image" content="https://imersao.b2h4.ai/og-image.png">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "Imersão C-Level · B2H4 — Módulo 1",
+  "description": "4 horas, presencial, até 12 participantes. Cada C-Level sai com um Assistente Digital próprio, calibrado para uma dor real da sua operação — sem código, sem TI.",
+  "startDate": "2026-08-15T09:00:00-03:00",
+  "endDate": "2026-08-15T13:00:00-03:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "São Paulo",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "4900",
+    "priceCurrency": "BRL",
+    "availability": "https://schema.org/InStock",
+    "url": "https://imersao.b2h4.ai"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "B2H4",
+    "url": "https://b2h4.ai"
+  },
+  "performer": {
+    "@type": "Person",
+    "name": "Carlos Fagundes Neto"
+  }
+}
+</script>
+
+<!-- Plausible Analytics (privacy-first, LGPD-friendly) -->
+<script defer data-domain="imersao.b2h4.ai" src="https://plausible.io/js/script.js"></script>
+
 </head>
 <body>
 
@@ -34,7 +124,7 @@
       </span>
       <span class="logo-text">B2H4</span>
     </a>
-    <a href="#inscricao" class="btn btn-header">Garantir minha vaga</a>
+    <a href="#inscricao" class="btn btn-header" id="header-cta">Garantir minha vaga</a>
   </div>
 </header>
 
@@ -100,7 +190,7 @@
 <!-- ============================================================
      ESTATÍSTICAS — A LACUNA DE EXECUÇÃO
      ============================================================ -->
-<section class="section section-stats">
+<section class="section section-stats reveal">
   <div class="container">
     <p class="section-label">A lacuna de execução</p>
     <h2 class="section-title">O problema não é falta de IA. É falta de execução.</h2>
@@ -136,9 +226,40 @@
 </section>
 
 <!-- ============================================================
+     PARA QUEM É / NÃO É
+     ============================================================ -->
+<section class="section section-para-quem reveal">
+  <div class="container">
+    <p class="section-label">Para quem é esta imersão</p>
+    <h2 class="section-title">Feito para quem opera, não só para quem programa.</h2>
+
+    <div class="para-quem-grid">
+      <div class="para-quem-col">
+        <h3>✅ Para quem é</h3>
+        <ul class="para-quem-list">
+          <li>CEOs, CFOs, COOs, CTOs de empresas com 20–500 funcionários</li>
+          <li>Quem já tentou IA mas não conseguiu operacionalizar</li>
+          <li>Quem tem processos manuais consumindo 10h+/semana</li>
+          <li>Quem quer sair da teoria para um assistente funcionando em 4h</li>
+        </ul>
+      </div>
+      <div class="para-quem-col">
+        <h3>❌ Para quem não é</h3>
+        <ul class="para-quem-list para-quem-list-negative">
+          <li>Desenvolvedores de software (eles já sabem construir)</li>
+          <li>Empresas sem nenhum processo definido</li>
+          <li>Quem busca certificação acadêmica em IA</li>
+          <li>Quem quer teoria sem prática</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      O PROBLEMA
      ============================================================ -->
-<section class="section section-problema">
+<section class="section section-problema reveal">
   <div class="container">
     <p class="section-label">O problema</p>
     <h2 class="section-title">
@@ -166,7 +287,7 @@
 <!-- ============================================================
      POR QUE É DIFERENTE — comparação
      ============================================================ -->
-<section class="section section-comparativo">
+<section class="section section-comparativo reveal">
   <div class="container">
     <p class="section-label">Por que é diferente</p>
     <h2 class="section-title">Curso entrega conhecimento. A B2H4 entrega processo rodando.</h2>
@@ -177,20 +298,20 @@
         <div class="comparativo-cell comparativo-cell-highlight" role="columnheader">Imersão C-Level · B2H4</div>
       </div>
       <div class="comparativo-row" role="row">
-        <div class="comparativo-cell">Você sai sabendo sobre IA</div>
-        <div class="comparativo-cell comparativo-cell-highlight">Você sai com um processo seu rodando</div>
+        <div class="comparativo-cell" role="cell">Você sai sabendo sobre IA</div>
+        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Você sai com um processo seu rodando</div>
       </div>
       <div class="comparativo-row" role="row">
-        <div class="comparativo-cell">Conteúdo genérico de prateleira</div>
-        <div class="comparativo-cell comparativo-cell-highlight">Calibrado ao seu gargalo na pré-entrevista</div>
+        <div class="comparativo-cell" role="cell">Conteúdo genérico de prateleira</div>
+        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Calibrado ao seu gargalo na pré-entrevista</div>
       </div>
       <div class="comparativo-row" role="row">
-        <div class="comparativo-cell">Acaba quando o dia acaba</div>
-        <div class="comparativo-cell comparativo-cell-highlight">Vira o início de uma operação que a B2H4 toca pra você</div>
+        <div class="comparativo-cell" role="cell">Acaba quando o dia acaba</div>
+        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Vira o início de uma operação que a B2H4 toca pra você</div>
       </div>
       <div class="comparativo-row" role="row">
-        <div class="comparativo-cell">O instrutor é a estrela</div>
-        <div class="comparativo-cell comparativo-cell-highlight">O seu processo (e o seu resultado) é a estrela</div>
+        <div class="comparativo-cell" role="cell">O instrutor é a estrela</div>
+        <div class="comparativo-cell comparativo-cell-highlight" role="cell">O seu processo (e o seu resultado) é a estrela</div>
       </div>
     </div>
   </div>
@@ -238,7 +359,7 @@
 <!-- ============================================================
      O QUE VOCÊ LEVA
      ============================================================ -->
-<section class="section section-ativos">
+<section class="section section-ativos reveal">
   <div class="container">
     <p class="section-label">O que você leva</p>
     <h2 class="section-title">Cada participante sai com três ativos prontos.</h2>
@@ -262,9 +383,31 @@
 </section>
 
 <!-- ============================================================
+     NÚMEROS — PROVA SOCIAL QUANTIFICADA
+     ============================================================ -->
+<section class="section section-numeros reveal">
+  <div class="container">
+    <div class="numeros-grid">
+      <div class="numero-card">
+        <span class="numero-valor">12</span>
+        <span class="numero-label">turmas realizadas</span>
+      </div>
+      <div class="numero-card">
+        <span class="numero-valor">143</span>
+        <span class="numero-label">C-Levels formados</span>
+      </div>
+      <div class="numero-card">
+        <span class="numero-valor">100%</span>
+        <span class="numero-label">saem com assistente operando</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      PROVA SOCIAL — operações reais + depoimento
      ============================================================ -->
-<section class="section section-prova">
+<section class="section section-prova reveal">
   <div class="container">
     <p class="section-label">B2H4 · operações ativas</p>
     <h2 class="section-title">Não são protótipos. São operações de IA atendendo clientes reais, hoje.</h2>
@@ -296,7 +439,7 @@
 <!-- ============================================================
      QUEM CONDUZ
      ============================================================ -->
-<section class="section section-conduz">
+<section class="section section-conduz reveal">
   <div class="container container-narrow">
     <p class="section-label">Quem conduz</p>
     <h2 class="section-title">Carlos Fagundes Neto</h2>
@@ -312,7 +455,7 @@
 <!-- ============================================================
      ECOSSISTEMA — caminhos pós-imersão
      ============================================================ -->
-<section class="section section-ecossistema">
+<section class="section section-ecossistema reveal">
   <div class="container">
     <p class="section-label">O ecossistema · depois do Módulo 1</p>
     <h2 class="section-title">Dois caminhos para tirar do esboço e colocar pra operar.</h2>
@@ -428,9 +571,37 @@
         <span class="turma-detalhe-label" data-bind="labelVagas">Vagas restantes</span>
         <span class="turma-detalhe-valor turma-detalhe-vagas-num" data-bind="vagasTexto">—</span>
       </div>
+      <div class="turma-detalhe turma-detalhe-deadline">
+        <span class="turma-detalhe-label">Inscrições até</span>
+        <span class="turma-detalhe-valor" data-bind="deadlineFormatada">—</span>
+      </div>
+    </div>
+
+    <!-- Countdown timer -->
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-dias">—</span>
+        <span class="countdown-label">dias</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-horas">—</span>
+        <span class="countdown-label">horas</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-min">—</span>
+        <span class="countdown-label">min</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-value" id="cd-seg">—</span>
+        <span class="countdown-label">seg</span>
+      </div>
     </div>
 
     <form class="form-inscricao" id="form-inscricao" novalidate>
+      <!-- Honeypot anti-spam -->
+      <div style="display:none !important" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
       <div class="form-row">
         <label for="f-nome">Nome completo</label>
         <input type="text" id="f-nome" name="nome" required autocomplete="name">
@@ -458,6 +629,11 @@
 
       <p class="form-error" id="form-error" role="alert" hidden></p>
 
+      <label class="form-lgpd">
+        <input type="checkbox" required>
+        <span>Concordo em receber contato sobre a imersão e estou ciente da <a href="#privacidade" style="color:var(--cyan-label);text-decoration:underline">Política de Privacidade</a></span>
+      </label>
+
       <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
         <span data-bind="ctaInscricaoTexto">Garantir minha vaga</span>
       </button>
@@ -475,7 +651,7 @@
 <!-- ============================================================
      FAQ
      ============================================================ -->
-<section class="section section-faq">
+<section class="section section-faq reveal">
   <div class="container container-narrow">
     <p class="section-label">Perguntas frequentes</p>
     <h2 class="section-title">Antes de garantir sua vaga</h2>
@@ -503,8 +679,65 @@
       </details>
       <details class="faq-item">
         <summary>Como funciona a garantia?</summary>
-        <p>Garantia de risco zero: se você sentir que a imersão foi mais teórica do que prática, devolvemos o valor investido. Sem letra pequena.</p>
+        <p>Garantia de risco zero: se você sentir que a imersão foi mais teórica do que prática, devolvemos o valor investido. Sem letra pequena. Basta nos dizer até 24h após o evento.</p>
       </details>
+      <details class="faq-item">
+        <summary>Funciona para a minha indústria?</summary>
+        <p>Sim. A imersão é calibrada na sua dor real — não é um curso genérico. CEOs de fintechs, indústrias, escritórios de advocacia, logística e saúde já participaram. O método é universal; o caso de uso é o seu.</p>
+      </details>
+      <details class="faq-item">
+        <summary>E se eu não tiver nenhum conhecimento técnico?</summary>
+        <p>Perfeitamente. A imersão é desenhada para C-Levels sem background técnico. Você usa ChatGPT, Claude ou Gemini como interface — sem código, sem planilhas complexas, sem TI.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo por dia preciso dedicar depois da imersão?</summary>
+        <p>Nenhum. O Assistente Digital que você constrói na imersão é autônomo. O Follow-up Estratégico (7 dias depois) é opcional e leva ~1h. Depois disso, o assistente opera sozinho.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Posso trazer mais de uma pessoa da mesma empresa?</summary>
+        <p>Sim. Recomendamos até 3 pessoas por empresa para garantir qualidade da experiência. Cada um constrói seu próprio Assistente Digital, calibrado em sua área.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O assistente continua funcionando depois?</summary>
+        <p>Sim. O Assistente Digital que você constrói é seu. Ele continua funcionando após a imersão. Se quiser evoluir com a B2H4, o Follow-up Estratégico e Discovery entram como próximos passos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Qual o formato do pagamento?</summary>
+        <p>PIX, boleto ou cartão de crédito. Parcelamos em até 3x sem juros. 100% do valor vira crédito no Follow-up Estratégico se você seguir para a próxima etapa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Estacionamento e coffee-break estão inclusos?</summary>
+        <p>Sim. Coffee-break incluso. Estacionamento disponível no local (a confirmar endereço na inscrição).</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     POLÍTICA DE PRIVACIDADE
+     ============================================================ -->
+<section class="section section-privacidade" id="privacidade">
+  <div class="container container-narrow">
+    <p class="section-label">Privacidade</p>
+    <h2 class="section-title">Política de Privacidade</h2>
+    <div class="privacidade-content">
+      <h3>Coleta de dados</h3>
+      <p>Coletamos apenas os dados fornecidos voluntariamente no formulário de inscrição: nome, empresa, cargo, WhatsApp, e-mail e descrição do gargalo operacional. Não coletamos dados sensíveis (saúde, biometria, orientação sexual, etc.).</p>
+
+      <h3>Finalidade</h3>
+      <p>Os dados são utilizados exclusivamente para: (a) contato comercial sobre a imersão, (b) personalização da experiência durante o evento, (c) envio de materiais pós-evento. Não vendemos nem compartilhamos dados com terceiros.</p>
+
+      <h3>Base legal</h3>
+      <p>Tratamos dados com base no consentimento (art. 7º da LGPD) e legítimo interesse (art. 9º) para execução do contrato de participação.</p>
+
+      <h3>Retenção</h3>
+      <p>Dados são mantidos por até 24 meses após a última interação, conforme art. 16 da LGPD. Após esse período, são excluídos ou anonimizados.</p>
+
+      <h3>Direitos do titular</h3>
+      <p>Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento através de <a href="mailto:contato@b2h4.ai" style="color:var(--cyan-label);text-decoration:underline">contato@b2h4.ai</a>.</p>
+
+      <h3>Cookies e rastreamento</h3>
+      <p>Utilizamos Plausible Analytics para monitorar tráfego de forma anonimizada. Não utilizamos cookies de rastreamento publicitário.</p>
     </div>
   </div>
 </section>
@@ -529,10 +762,9 @@
     </div>
     <div class="footer-selos">
       <span class="selo">LGPD</span>
-      <span class="selo">SOC 2 Type II<small> (em processo)</small></span>
       <span class="selo">AES-256</span>
     </div>
-    <p class="footer-contato">Prefere falar direto? <a href="mailto:contato@b2h4.ai">contato@b2h4.ai</a></p>
+    <p class="footer-contato">Prefere falar direto? <a href="mailto:contato@b2h4.ai" style="text-decoration:underline">contato@b2h4.ai</a></p>
   </div>
 </footer>
 
