@@ -128,6 +128,7 @@
         whatsapp: form.whatsapp.value.trim(),
         email: form.email.value.trim(),
         gargalo: form.gargalo.value.trim(),
+        cupom: (form.cupom.value || "").trim().toUpperCase(),
         turmaData: cfg.data || "",
         statusTurma: cfg.status || "",
         origem: "imersao.b2h4.ai",

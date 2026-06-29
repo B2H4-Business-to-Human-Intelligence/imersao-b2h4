@@ -964,6 +964,39 @@ a.evento-item-map:hover .evento-item-valor {
 }
 
 /* ============================================================
+   CUPOM
+   ============================================================ */
+.form-label-opt {
+  font-size: .78rem;
+  color: var(--gray-dim);
+  font-weight: 400;
+}
+
+.cupom-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cupom-wrap input {
+  flex: 1;
+  letter-spacing: .06em;
+  font-family: var(--font-mono);
+  font-size: .9rem;
+}
+
+.cupom-status {
+  font-size: .8rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.cupom-status.valido { color: #4ade80; }
+.cupom-status.invalido { color: #f87171; }
+
+/* ============================================================
    LGPD CHECKBOX
    ============================================================ */
 .form-lgpd {
