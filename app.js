@@ -67,6 +67,7 @@
       dataFormatada: (status === "sem_turma") ? "A definir" : formatarData(cfg.data),
       horario: (status === "sem_turma") ? "—" : (cfg.horario || "—"),
       local: (status === "sem_turma") ? "—" : (cfg.local || "—"),
+      localMapUrl: (status === "sem_turma" || !cfg.localMapUrl) ? "" : cfg.localMapUrl,
       vagasTexto,
       labelVagas,
       vagasTextoCurto,
@@ -74,10 +75,8 @@
       tituloInscricaoSecao,
       labelInscricaoSecao,
       precoFormatado: (status === "sem_turma") ? "Sob consulta" : (cfg.preco || "Sob consulta"),
-      precoAncoraFormatado: cfg.precoAncora ? `de ${cfg.precoAncora}` : "",
-      progressFill: "", // handled separately (width style)
+      progressFill: "",
       progressTrackVisibility: "",
-      deadlineFormatada: (status === "sem_turma") ? "—" : formatarDeadline(cfg.deadlineInscricao),
     };
   }
 
@@ -97,23 +96,13 @@
         el.textContent = values[key];
       }
     });
-  }
-
-  /* ---------- Renderiza depoimentos ---------- */
-
-  function renderDepoimentos() {
-    const container = document.getElementById("depoimentos");
-    if (!container || !Array.isArray(cfg.depoimentos)) return;
-    container.innerHTML = cfg.depoimentos.map((dep) => `
-      <p class="depoimento-texto">"${escapeHtml(dep.texto)}"</p>
-      <p class="depoimento-autor"><strong>${escapeHtml(dep.nome)}</strong> · ${escapeHtml(dep.cargo)}</p>
-    `).join('<div style="height:32px"></div>');
-  }
-
-  function escapeHtml(str) {
-    const div = document.createElement("div");
-    div.textContent = str || "";
-    return div.innerHTML;
+    // Seta href em elementos com data-bind-href
+    document.querySelectorAll("[data-bind-href]").forEach((el) => {
+      const key = el.getAttribute("data-bind-href");
+      if (values.hasOwnProperty(key) && values[key]) {
+        el.href = values[key];
+      }
+    });
   }
 
   /* ---------- Formulário de inscrição ---------- */
@@ -179,6 +168,11 @@
         form.hidden = true;
         successBox.hidden = false;
         successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        // Incrementa otimisticamente e re-sincroniza com Sheets após 3s
+        cfg.vagasPreenchidas = (Number(cfg.vagasPreenchidas) || 0) + 1;
+        aplicarBindings();
+        setTimeout(fetchVagasAoVivo, 3000);
       } catch (err) {
         console.error("Erro ao enviar formulário:", err);
         showError("Não conseguimos enviar agora. Tente novamente ou fale direto pelo contato@b2h4.ai.");
@@ -243,13 +237,24 @@
     setInterval(updateCountdown, 1000);
   }
 
-  /* ---------- Deadline Formatada ---------- */
+  /* ---------- Vagas ao vivo (Google Sheets via Apps Script) ---------- */
 
-  function formatarDeadline(isoDate) {
-    if (!isoDate) return '—';
-    const [ano, mes, dia] = isoDate.split('-').map(Number);
-    const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-    return `${dia} de ${meses[mes - 1]}`;
+  async function fetchVagasAoVivo() {
+    const url = cfg.webhookUrl;
+    if (!url || url.indexOf("COLE_AQUI") !== -1) return;
+
+    try {
+      const turmaParam = cfg.data ? "?turma=" + encodeURIComponent(cfg.data) : "";
+      const res = await fetch(url + turmaParam);
+      if (!res.ok) return;
+      const json = await res.json();
+      if (json.ok && typeof json.inscricoes === "number") {
+        cfg.vagasPreenchidas = json.inscricoes;
+        aplicarBindings();
+      }
+    } catch (_) {
+      // Silently fail — mantém o valor de vagasPreenchidas do config.js
+    }
   }
 
   /* ---------- Honeypot anti-spam ---------- */
@@ -262,9 +267,9 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     aplicarBindings();
-    renderDepoimentos();
     setupForm();
     setupScrollAnimations();
     setupCountdown();
+    fetchVagasAoVivo();
   });
 })();

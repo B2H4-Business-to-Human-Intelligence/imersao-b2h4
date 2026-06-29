@@ -3,179 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imersão C-Level · B2H4 — Construa seu Assistente Digital em 4h</title>
-<meta name="description" content="Imersão hands-on para C-Levels: saia com um Assistente Digital próprio, calibrado para uma dor real da sua operação. 4h, presencial, até 12 participantes.">
+<title>Imersão de IA para C-Level · B2H4 — Saia com IA operando, não com slides</title>
+<meta name="description" content="Um dia para sair com um Assistente Digital próprio, calibrado para sua operação real. Para CEOs, CFOs e COOs que querem IA funcionando, não teoria.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* Font-size-adjust for CLS stability */
-@font-face {
-  font-family: 'Space Grotesk Fallback';
-  src: local('Arial');
-  size-adjust: 107%;
-  ascent-override: 95%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Inter Fallback';
-  src: local('Arial');
-  size-adjust: 100%;
-  ascent-override: 89%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="lp-assets/vendor/three-r128.min.js"></script>
+<script src="lp-assets/vendor/GLTFLoader-r128.js"></script>
+<script src="lp-assets/models/logo-b2h4-3d.embedded.js"></script>
 
-<!-- ============================================================
-     SEO + SOCIAL + TECHNICAL
-     ============================================================ -->
-
-<!-- Canonical -->
 <link rel="canonical" href="https://imersao.b2h4.ai">
 
-<!-- Open Graph -->
-<meta property="og:title" content="Imersão C-Level · B2H4 — Construa seu Assistente Digital em 4h">
-<meta property="og:description" content="Sua empresa já tem IA. Falta alguém colocar pra operar. 4h presencial, até 12 participantes. Cada C-Level sai com um Assistente Digital próprio.">
+<meta property="og:title" content="Imersão de IA para C-Level · B2H4">
+<meta property="og:description" content="Um dia para sair com IA operando na sua empresa. Para quem quer resultado, não certificado.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imersao.b2h4.ai">
 <meta property="og:site_name" content="B2H4">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:image" content="https://imersao.b2h4.ai/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 
-<!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Imersão C-Level · B2H4 — Construa seu Assistente Digital em 4h">
-<meta name="twitter:description" content="Sua empresa já tem IA. Falta alguém colocar pra operar. 4h presencial, até 12 participantes.">
-<meta name="twitter:image" content="https://imersao.b2h4.ai/og-image.png">
-
-<!-- Robots -->
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 
-<!-- JSON-LD Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Event",
-  "name": "Imersão C-Level · B2H4 — Módulo 1",
-  "description": "4 horas, presencial, até 12 participantes. Cada C-Level sai com um Assistente Digital próprio, calibrado para uma dor real da sua operação — sem código, sem TI.",
-  "startDate": "2026-08-15T09:00:00-03:00",
-  "endDate": "2026-08-15T13:00:00-03:00",
-  "eventStatus": "https://schema.org/EventScheduled",
-  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-  "location": {
-    "@type": "Place",
-    "name": "São Paulo",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "São Paulo",
-      "addressRegion": "SP",
-      "addressCountry": "BR"
-    }
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "4900",
-    "priceCurrency": "BRL",
-    "availability": "https://schema.org/InStock",
-    "url": "https://imersao.b2h4.ai"
-  },
-  "organizer": {
-    "@type": "Organization",
-    "name": "B2H4",
-    "url": "https://b2h4.ai"
-  },
-  "performer": {
-    "@type": "Person",
-    "name": "Carlos Fagundes Neto"
-  }
-}
-</script>
-
-<!-- Plausible Analytics (privacy-first, LGPD-friendly) -->
 <script defer data-domain="imersao.b2h4.ai" src="https://plausible.io/js/script.js"></script>
-
 </head>
 <body>
 
-<!-- ============================================================
-     CONFIGURAÇÃO DE TURMA — leia o GUIA-ATUALIZACAO.md para
-     instruções completas de como editar isto a cada novo lote.
-     ============================================================ -->
 <script src="config.js"></script>
 
-<!-- ============================================================
-     HEADER
-     ============================================================ -->
+<!-- HEADER -->
 <header class="site-header" id="topo">
   <div class="header-inner">
     <a href="#topo" class="logo">
-      <span class="logo-mark" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <circle cx="14" cy="14" r="12.5" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
-          <circle cx="14" cy="14" r="7.5" stroke="currentColor" stroke-width="1.4" opacity="0.8"/>
-          <circle cx="14" cy="14" r="2.4" fill="currentColor"/>
-        </svg>
-      </span>
-      <span class="logo-text">B2H4</span>
+      <img src="logo-b2h4-branco.webp" alt="B2H4" style="height:28px;width:auto;display:block" />
     </a>
-    <a href="#inscricao" class="btn btn-header" id="header-cta">Garantir minha vaga</a>
+    <a href="#inscricao" class="btn btn-header btn-primary" id="header-cta">Garantir vaga</a>
   </div>
 </header>
 
 <main>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true">
-    <svg viewBox="0 0 800 800" class="sigil" width="720" height="720" fill="none">
-      <circle cx="400" cy="400" r="380" stroke="currentColor" stroke-width="1"/>
-      <circle cx="400" cy="400" r="280" stroke="currentColor" stroke-width="1"/>
-      <circle cx="400" cy="400" r="180" stroke="currentColor" stroke-width="1"/>
-      <circle cx="400" cy="400" r="80" stroke="currentColor" stroke-width="1"/>
-      <line x1="400" y1="20" x2="400" y2="780" stroke="currentColor" stroke-width="0.6"/>
-      <line x1="20" y1="400" x2="780" y2="400" stroke="currentColor" stroke-width="0.6"/>
-    </svg>
-  </div>
+  <canvas id="bg3d" aria-hidden="true"></canvas>
 
   <div class="container hero-inner">
-    <p class="eyebrow"><span class="eyebrow-dash"></span> IMERSÃO C-LEVEL · MÓDULO 1 · B2H4</p>
+    <p class="eyebrow"><span class="eyebrow-dash"></span> IMERSÃO C-LEVEL · IA E AUTOMAÇÃO · B2H4</p>
 
     <h1 class="hero-title">
-      Sua empresa já tem IA.<br>
-      Falta alguém <span class="accent">colocar pra operar.</span>
+      A IA já está na sua empresa.<br>
+      Falta <span class="accent">colocá-la pra operar.</span>
     </h1>
 
     <p class="hero-sub">
-      4 horas, presencial, até 12 participantes. Cada C-Level sai com um
-      <strong>Assistente Digital próprio</strong>, calibrado para uma dor real da
-      sua operação — sem código, sem TI, sem promessa vaga de "transformação digital".
+      Um dia presencial para sair com <strong>IA rodando no seu processo real</strong> —
+      não com slides, não com teoria, não com promessas de transformação digital.
     </p>
 
     <div class="hero-ctas">
       <a href="#inscricao" class="btn btn-primary">Garantir minha vaga</a>
-      <a href="#mecanismo" class="btn btn-ghost">Ver como funciona ↓</a>
+      <a href="#o-dia" class="btn btn-ghost">Ver o que acontece no dia ↓</a>
     </div>
 
-    <!-- SIGNATURE ELEMENT: painel de turma ao vivo -->
     <div class="turma-live" id="turma-live-hero">
       <div class="turma-live-row">
         <div class="turma-live-item">
           <span class="turma-live-label">Próxima turma</span>
           <span class="turma-live-value" data-bind="dataFormatada">—</span>
         </div>
-        <div class="turma-live-item">
-          <span class="turma-live-label">Local</span>
+        <a class="turma-live-item turma-live-item-map" data-bind-href="localMapUrl" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="turma-live-label">Local <span class="evento-map-icon" aria-hidden="true">↗</span></span>
           <span class="turma-live-value" data-bind="local">—</span>
-        </div>
-        <div class="turma-live-item turma-live-item-vagas">
+        </a>
+        <div class="turma-live-item">
           <span class="turma-live-label" data-bind="labelVagas">Vagas restantes</span>
           <span class="turma-live-value turma-live-vagas-num" data-bind="vagasTexto">—</span>
         </div>
@@ -187,332 +87,172 @@
   </div>
 </section>
 
-<!-- ============================================================
-     ESTATÍSTICAS — A LACUNA DE EXECUÇÃO
-     ============================================================ -->
-<section class="section section-stats reveal">
+<!-- PROOF STRIP -->
+<section class="section-proof-strip">
   <div class="container">
-    <p class="section-label">A lacuna de execução</p>
-    <h2 class="section-title">O problema não é falta de IA. É falta de execução.</h2>
-    <p class="section-lead">
-      O mercado nunca teve tanto acesso a IA — e raramente extrai retorno dela.
-      A diferença entre quem transforma e quem só experimenta não é tecnologia.
-      É colocar pra operar.
-    </p>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <span class="stat-number">~4%</span>
-        <span class="stat-desc">das organizações extraem ROI real de IA</span>
-        <span class="stat-source">Pesquisa global de adoção de IA</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">95%</span>
-        <span class="stat-desc">dos investimentos falham por execução, não por tecnologia</span>
-        <span class="stat-source">Estudos de maturidade em IA</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-number">39%</span>
-        <span class="stat-desc">dos executivos não conseguem medir o impacto financeiro da IA</span>
-        <span class="stat-source">Decisores de tecnologia</span>
-      </div>
+    <div class="proof-strip-inner">
+      <blockquote class="proof-strip-quote">
+        <span class="proof-strip-mark">"</span>Saí do curso usando IA para analisar balanços de bancos em tempo real.
+        <cite class="proof-strip-cite">— Hélio Magalhães, Conselheiro C-Level · participante</cite>
+      </blockquote>
     </div>
-
-    <p class="section-closer">
-      A oportunidade não está em adotar IA. Está em colocá-la pra operar —
-      com método e medição desde o dia 1.
-    </p>
   </div>
 </section>
 
-<!-- ============================================================
-     PARA QUEM É / NÃO É
-     ============================================================ -->
+<!-- PARA QUEM É -->
 <section class="section section-para-quem reveal">
   <div class="container">
-    <p class="section-label">Para quem é esta imersão</p>
-    <h2 class="section-title">Feito para quem opera, não só para quem programa.</h2>
+    <p class="section-label">Para quem é</p>
+    <h2 class="section-title">Para quem decide — e precisa de IA operando, não de mais um treinamento.</h2>
 
-    <div class="para-quem-grid">
-      <div class="para-quem-col">
-        <h3>✅ Para quem é</h3>
-        <ul class="para-quem-list">
-          <li>CEOs, CFOs, COOs, CTOs de empresas com 20–500 funcionários</li>
-          <li>Quem já tentou IA mas não conseguiu operacionalizar</li>
-          <li>Quem tem processos manuais consumindo 10h+/semana</li>
-          <li>Quem quer sair da teoria para um assistente funcionando em 4h</li>
+    <div class="pq-grid">
+      <div class="pq-col pq-col-sim">
+        <p class="pq-col-head">Faz sentido se você é</p>
+        <ul class="pq-list">
+          <li>CEO, CFO, COO ou diretor com pressão para mostrar resultado com IA</li>
+          <li>Gestor sênior com processos repetitivos que consomem time e custo</li>
+          <li>Fundador que quer IA operando antes de contratar uma equipe técnica</li>
+          <li>Executivo que já tentou IA — e ficou no piloto que nunca saiu do papel</li>
         </ul>
       </div>
-      <div class="para-quem-col">
-        <h3>❌ Para quem não é</h3>
-        <ul class="para-quem-list para-quem-list-negative">
-          <li>Desenvolvedores de software (eles já sabem construir)</li>
-          <li>Empresas sem nenhum processo definido</li>
-          <li>Quem busca certificação acadêmica em IA</li>
-          <li>Quem quer teoria sem prática</li>
+      <div class="pq-col pq-col-nao">
+        <p class="pq-col-head">Não é para você se</p>
+        <ul class="pq-list pq-list-neg">
+          <li>Você quer um certificado de IA para o currículo</li>
+          <li>Está buscando conteúdo teórico sobre o futuro da tecnologia</li>
+          <li>Precisa de um curso para apresentar internamente como treinamento</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     O PROBLEMA
-     ============================================================ -->
-<section class="section section-problema reveal">
+<!-- O DIA -->
+<section class="section section-o-dia" id="o-dia">
   <div class="container">
-    <p class="section-label">O problema</p>
-    <h2 class="section-title">
-      Sua empresa usa IA como um "Google melhorado".
-      O potencial real fica parado.
-    </h2>
-
-    <div class="problema-grid">
-      <div class="problema-item">
-        <h3>Processos manuais comendo horas</h3>
-        <p>Planilhas, conferências, copiar-e-colar, relatórios montados na mão. Toda semana.</p>
-      </div>
-      <div class="problema-item">
-        <h3>"Quem vai fazer isso rodar?"</h3>
-        <p>Toda automação parece depender de um desenvolvedor. A fila nunca anda.</p>
-      </div>
-      <div class="problema-item">
-        <h3>Entusiasmo sem operação</h3>
-        <p>Fala-se muito de IA, mas nada de fato passa a operar sozinho no dia a dia.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     POR QUE É DIFERENTE — comparação
-     ============================================================ -->
-<section class="section section-comparativo reveal">
-  <div class="container">
-    <p class="section-label">Por que é diferente</p>
-    <h2 class="section-title">Curso entrega conhecimento. A B2H4 entrega processo rodando.</h2>
-
-    <div class="comparativo-table" role="table">
-      <div class="comparativo-row comparativo-head" role="row">
-        <div class="comparativo-cell" role="columnheader">Curso de IA comum</div>
-        <div class="comparativo-cell comparativo-cell-highlight" role="columnheader">Imersão C-Level · B2H4</div>
-      </div>
-      <div class="comparativo-row" role="row">
-        <div class="comparativo-cell" role="cell">Você sai sabendo sobre IA</div>
-        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Você sai com um processo seu rodando</div>
-      </div>
-      <div class="comparativo-row" role="row">
-        <div class="comparativo-cell" role="cell">Conteúdo genérico de prateleira</div>
-        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Calibrado ao seu gargalo na pré-entrevista</div>
-      </div>
-      <div class="comparativo-row" role="row">
-        <div class="comparativo-cell" role="cell">Acaba quando o dia acaba</div>
-        <div class="comparativo-cell comparativo-cell-highlight" role="cell">Vira o início de uma operação que a B2H4 toca pra você</div>
-      </div>
-      <div class="comparativo-row" role="row">
-        <div class="comparativo-cell" role="cell">O instrutor é a estrela</div>
-        <div class="comparativo-cell comparativo-cell-highlight" role="cell">O seu processo (e o seu resultado) é a estrela</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     MECANISMO DA IMERSÃO
-     ============================================================ -->
-<section class="section section-mecanismo" id="mecanismo">
-  <div class="container">
-    <p class="section-label">Módulo 1 · A imersão hands-on</p>
+    <p class="section-label">O que acontece no dia</p>
     <h2 class="section-title">O ponto de partida é construir, não assistir.</h2>
-    <p class="section-lead">
-      4 horas, presencial, até 12 participantes. Cada um sai com um Assistente
-      Digital próprio, calibrado para uma dor real da operação — sem código,
-      sem TI. A imersão opera como campo de provas.
-    </p>
+    <p class="section-lead">Presencial · até 12 participantes · sem código · sem TI</p>
 
-    <div class="blocos-timeline">
-      <div class="bloco-item">
-        <span class="bloco-num">Bloco 1</span>
-        <div class="bloco-content">
-          <h3>Batalha dos Modelos</h3>
-          <p>GPT vs Claude vs Gemini, comparados por caso de uso, custo e aderência ao seu setor. Cada um decide qual modelo adotar com base em dados, não em marketing.</p>
+    <div class="dia-timeline">
+
+      <div class="dia-bloco">
+        <div class="dia-bloco-tempo">
+          <span class="dia-tag">Manhã</span>
+        </div>
+        <div class="dia-bloco-corpo">
+          <h3>Onde a IA entra na sua operação</h3>
+          <p>Diagnóstico real. Você traz seu processo — a gente usa uma régua objetiva para identificar onde IA gera retorno mensurável: impacto alto, complexidade baixa, risco controlado.</p>
+          <p style="margin-top:10px">Sai da manhã sabendo exatamente qual processo priorizar e por quê.</p>
         </div>
       </div>
-      <div class="bloco-item">
-        <span class="bloco-num">Bloco 2</span>
-        <div class="bloco-content">
-          <h3>Construção do Assistente Digital</h3>
-          <p>Cada participante constrói um assistente calibrado para um processo real da sua área — direto no ChatGPT, Claude ou Gemini. Sem código, sem TI, sem integrações externas. Você traz a dor; a imersão entrega o ativo.</p>
+
+      <div class="dia-bloco">
+        <div class="dia-bloco-tempo">
+          <span class="dia-tag">Tarde</span>
+        </div>
+        <div class="dia-bloco-corpo">
+          <h3>Mão na massa com o seu caso real</h3>
+          <p>Calibrado para a sua dor, não para um exemplo genérico. Você sai da tarde com o Assistente Digital construído, testado e pronto para rodar — sem depender de TI para colocar no ar.</p>
         </div>
       </div>
-      <div class="bloco-item">
-        <span class="bloco-num">Bloco 3</span>
-        <div class="bloco-content">
-          <h3>Lição de casa e próximos passos</h3>
-          <p>Você esboça o agente mais avançado para a sua área — o ponto de partida do Follow-up Estratégico e do Discovery, onde a B2H4 assume a construção.</p>
+
+      <div class="dia-bloco dia-bloco-saida">
+        <div class="dia-bloco-tempo">
+          <span class="dia-tag dia-tag-dest">Saída</span>
+        </div>
+        <div class="dia-bloco-corpo">
+          <h3>IA operando. Não prometida.</h3>
+          <p>Você sai do dia com tudo pronto para aplicar na semana seguinte — não com anotações de curso e uma lista de "próximos passos" que nunca acontecem.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     O QUE VOCÊ LEVA
-     ============================================================ -->
-<section class="section section-ativos reveal">
+<!-- O QUE VOCÊ LEVA -->
+<section class="section section-leva reveal">
   <div class="container">
     <p class="section-label">O que você leva</p>
-    <h2 class="section-title">Cada participante sai com três ativos prontos.</h2>
-    <p class="section-lead">Não são anotações de um curso. São ativos operacionais — o começo de algo que entra em produção.</p>
+    <h2 class="section-title">Três ativos prontos. Não são anotações — são operacionais.</h2>
 
-    <div class="ativos-grid">
-      <div class="ativo-card">
+    <div class="leva-grid">
+
+      <div class="leva-card leva-card-destaque">
+        <span class="leva-num">01</span>
         <h3>Assistente Digital próprio</h3>
-        <p>Criado na imersão e calibrado para um processo real da sua área. Governança embutida desde o primeiro prompt. ROI mensurável em 30 dias.</p>
+        <p>Construído no dia, calibrado para uma dor real da sua operação. Sem código, sem TI. Entra em uso na semana seguinte.</p>
       </div>
-      <div class="ativo-card">
-        <h3>Checklist Go/No-Go de Governança</h3>
-        <p>Critérios objetivos, documentados e auditáveis para validar qualquer solução de IA em 15 minutos. Substitui comitês lentos.</p>
+
+      <div class="leva-card">
+        <span class="leva-num">02</span>
+        <h3>Mapa de prioridades</h3>
+        <p>Seus processos classificados por impacto e viabilidade. Uma régua objetiva para decidir o que implementar primeiro — e o que deixar pra depois.</p>
       </div>
-      <div class="ativo-card">
-        <h3>Plano de 90 dias</h3>
-        <p>Roteiro de escala com ROI projetado por etapa, priorizado por impacto e complexidade — a partir da dor real que você trouxe.</p>
+
+      <div class="leva-card">
+        <span class="leva-num">03</span>
+        <h3>Plano de 30 dias</h3>
+        <p>Próximos passos concretos com responsável definido. O que entra em produção no mês seguinte, sem depender de reunião para decidir.</p>
       </div>
+
+    </div>
+
+    <div class="leva-nota">
+      <span style="color:var(--cyan-label)">→</span>
+      O ecossistema continua depois: Modelo Standard (trilha fechada, um projeto prioritário) ou Modelo Modular (à la carte, múltiplas frentes). Follow-up e Discovery viram crédito de 100% no projeto final.
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     NÚMEROS — PROVA SOCIAL QUANTIFICADA
-     ============================================================ -->
-<section class="section section-numeros reveal">
-  <div class="container">
-    <div class="numeros-grid">
-      <div class="numero-card">
-        <span class="numero-valor">12</span>
-        <span class="numero-label">turmas realizadas</span>
-      </div>
-      <div class="numero-card">
-        <span class="numero-valor">143</span>
-        <span class="numero-label">C-Levels formados</span>
-      </div>
-      <div class="numero-card">
-        <span class="numero-valor">100%</span>
-        <span class="numero-label">saem com assistente operando</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PROVA SOCIAL — operações reais + depoimento
-     ============================================================ -->
-<section class="section section-prova reveal">
-  <div class="container">
-    <p class="section-label">B2H4 · operações ativas</p>
-    <h2 class="section-title">Não são protótipos. São operações de IA atendendo clientes reais, hoje.</h2>
-
-    <div class="operacoes-grid">
-      <div class="operacao-card">
-        <span class="operacao-tag">RH Talentos 360</span>
-        <h3>Talent Pool</h3>
-        <p>Avaliação 360 (e além de 360), triagem e match de talentos com IA — do funil à entrevista.</p>
-      </div>
-      <div class="operacao-card">
-        <span class="operacao-tag">Compras · NF-e Saving</span>
-        <h3>Suvio</h3>
-        <p>Procurement intelligence: consolida NF-e, compara com benchmark de mercado e prova saving em R$/mês.</p>
-      </div>
-      <div class="operacao-card">
-        <span class="operacao-tag">Fiscal · Documentos</span>
-        <h3>NFE Explorer</h3>
-        <p>Leitura, organização e conferência de notas fiscais — fim do trabalho manual.</p>
-      </div>
-    </div>
-
-    <blockquote class="depoimento" id="depoimentos">
-      <!-- conteúdo de depoimentos vem do config.js via JS, ver render abaixo -->
-    </blockquote>
-  </div>
-</section>
-
-<!-- ============================================================
-     QUEM CONDUZ
-     ============================================================ -->
+<!-- QUEM CONDUZ -->
 <section class="section section-conduz reveal">
-  <div class="container container-narrow">
-    <p class="section-label">Quem conduz</p>
-    <h2 class="section-title">Carlos Fagundes Neto</h2>
-    <p class="section-lead">
-      Psicologia, 19 anos de mercado financeiro e agentes de IA em produção real — não em slide.
-      Carlos conduz a imersão a partir de uma pergunta simples: para quem estamos construindo isso?
-      A resposta é sempre humana. Inteligência Artificial amplifica; não substitui a expertise que já
-      está na sala.
-    </p>
-  </div>
-</section>
-
-<!-- ============================================================
-     ECOSSISTEMA — caminhos pós-imersão
-     ============================================================ -->
-<section class="section section-ecossistema reveal">
   <div class="container">
-    <p class="section-label">O ecossistema · depois do Módulo 1</p>
-    <h2 class="section-title">Dois caminhos para tirar do esboço e colocar pra operar.</h2>
-    <p class="section-lead">
-      O Módulo 1 é a fundação. A partir dele você escolhe o Modelo Standard
-      (trilha fechada, um projeto prioritário) ou o Modelo Modular (à la carte,
-      múltiplas frentes). Follow-up e Discovery viram crédito de 100% no projeto final.
-    </p>
+    <p class="section-label">Quem conduz</p>
+    <h2 class="section-title">Quem vai estar com você no dia</h2>
 
-    <div class="ecossistema-track">
-      <div class="eco-step eco-step-base">
-        <span class="eco-step-tag">Módulo 1</span>
-        <h3>Imersão Hands-On</h3>
-        <p class="eco-step-desc">A fundação obrigatória. Construir, não assistir.</p>
-        <ul class="eco-step-list">
-          <li>4h · presencial · até 12</li>
-          <li>Assistente Digital próprio</li>
-          <li>Plano de 90 dias</li>
-        </ul>
+    <div class="tgrid">
+
+      <div class="member">
+        <div class="photo">
+          <img src="carlos.jpeg" alt="Carlos Fagundes Neto">
+        </div>
+        <div>
+          <div class="role">CEO &amp; Founder</div>
+          <h3>Carlos Fagundes Neto</h3>
+          <p class="bio">Estrategista de IA para mercados regulados e fundador da B2H4.</p>
+          <ul>
+            <li>19 anos no setor financeiro — de Sales Engineer a Head de Inovação na Integral Trust</li>
+            <li>Psicólogo de formação e MBA em finanças pela FIA</li>
+            <li>Constrói agentes de IA para operações com margem de erro zero</li>
+          </ul>
+          <blockquote class="conduz-quote">"Empresa não precisa aprender a usar IA. Precisa de IA operando."</blockquote>
+        </div>
       </div>
-      <div class="eco-step">
-        <span class="eco-step-tag">Follow-up</span>
-        <h3>Estratégico · 7 dias depois</h3>
-        <p class="eco-step-desc">Entrevista individual com Carlos + priorização com a gestão.</p>
-        <ul class="eco-step-list">
-          <li>Matriz: impacto, viabilidade, alinhamento</li>
-          <li>Investimento sob consulta</li>
-          <li>Crédito 100% no Módulo 2A</li>
-        </ul>
+
+      <div class="member">
+        <div class="photo">
+          <img src="renan.jpeg" alt="Renan Bertolini">
+        </div>
+        <div>
+          <div class="role">Partnership &amp; Innovation Lead</div>
+          <h3>Renan Bertolini</h3>
+          <p class="bio">Estrategista de produtos e inovação, sócio-COO da Luminity Venture Builders.</p>
+          <ul>
+            <li>MBA pela USP e formação pela Saint Paul</li>
+            <li>Mercados de capitais, cripto, squads e produtos de IA aplicados ao RH</li>
+            <li>Foco em tecnologia e gestão de pessoas em processos de alta precisão</li>
+          </ul>
+          <a class="li" href="https://www.linkedin.com/in/renan-bertolini/" target="_blank" rel="noopener noreferrer">in · LinkedIn ↗</a>
+        </div>
       </div>
-      <div class="eco-step">
-        <span class="eco-step-tag">Módulo 2A</span>
-        <h3>Discovery de Projeto</h3>
-        <p class="eco-step-desc">Consultoria que desenha a solução antes de construir.</p>
-        <ul class="eco-step-list">
-          <li>Escopo, fluxo, dados, esforço</li>
-          <li>Investimento sob consulta</li>
-          <li>Crédito 100% no projeto final</li>
-        </ul>
-      </div>
-      <div class="eco-step">
-        <span class="eco-step-tag">Módulo 2B</span>
-        <h3>Era Agêntica</h3>
-        <p class="eco-step-desc">Aprofundamento para quem vai além da imersão inicial.</p>
-        <ul class="eco-step-list">
-          <li>Multiagentes, RAG, orquestração</li>
-          <li>Implementação em escala</li>
-          <li>Investimento sob consulta</li>
-        </ul>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     INVESTIMENTO + GARANTIA + BLOCO DE TURMA
-     ============================================================ -->
+<!-- INVESTIMENTO -->
 <section class="section section-investimento" id="investimento">
   <div class="container container-narrow">
     <p class="section-label">Investimento</p>
@@ -520,234 +260,196 @@
 
     <div class="invest-card">
       <div class="invest-card-head">
-        <span class="invest-card-tag">Módulo 1 · Imersão Hands-On</span>
+        <span class="invest-card-tag">Imersão C-Level · 1 dia presencial</span>
         <div class="invest-price-row">
-          <span class="invest-price" data-bind="precoFormatado">—</span>
-          <span class="invest-price-ancora" data-bind="precoAncoraFormatado"></span>
+          <span class="invest-price" data-bind="precoFormatado">R$ 2.500</span>
+          <span class="invest-price-ancora">por pessoa</span>
         </div>
       </div>
-      <p class="invest-card-sub">4h · presencial · até 12 participantes</p>
-      <p class="invest-card-desc">
-        A fundação. Cada participante sai com um Assistente Digital próprio e o Plano de 90 dias.
-      </p>
+      <p class="invest-card-sub">Turma limitada a 12 participantes · São Paulo · endereço enviado após inscrição</p>
       <ul class="invest-list">
-        <li>Assistente Digital próprio, calibrado na sua dor real</li>
-        <li>Checklist Go/No-Go de Governança</li>
-        <li>Plano de 90 dias com ROI projetado</li>
-        <li>100% do valor investido vira crédito no Follow-up Estratégico</li>
+        <li>Diagnóstico e priorização com seu processo real</li>
+        <li>Assistente Digital construído e calibrado no dia</li>
+        <li>Mapa de prioridades por impacto e viabilidade</li>
+        <li>Plano de 30 dias com próximos passos definidos</li>
+        <li>Follow-up vira crédito de 100% no projeto final</li>
       </ul>
       <a href="#inscricao" class="btn btn-primary btn-block">Garantir minha vaga</a>
     </div>
 
     <div class="garantia">
       <span class="garantia-icon" aria-hidden="true">✓</span>
-      <p><strong>Garantia de risco zero.</strong> Se a imersão for mais teórica do que prática, devolvemos o investimento.</p>
+      <p><strong>Garantia de risco zero:</strong> se a imersão for mais teórica que prática, devolvemos o valor na hora. Sem letra pequena.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCO DE TURMA + FORMULÁRIO DE INSCRIÇÃO
-     ============================================================ -->
+<!-- INSCRIÇÃO -->
 <section class="section section-inscricao" id="inscricao">
-  <div class="container container-narrow">
-    <p class="section-label" data-bind="labelInscricaoSecao">Próxima turma</p>
-    <h2 class="section-title" data-bind="tituloInscricaoSecao">Garanta sua vaga na imersão.</h2>
+  <div class="container inscricao-layout">
 
-    <div class="turma-detalhes-card">
-      <div class="turma-detalhe">
-        <span class="turma-detalhe-label">Data</span>
-        <span class="turma-detalhe-valor" data-bind="dataFormatada">—</span>
+    <!-- COLUNA ESQUERDA: evento + countdown -->
+    <div class="inscricao-evento">
+      <p class="section-label" data-bind="labelInscricaoSecao">Próxima turma</p>
+      <h2 class="inscricao-titulo" data-bind="tituloInscricaoSecao">Garanta sua vaga na imersão.</h2>
+
+      <div class="evento-detalhes">
+        <div class="evento-item">
+          <span class="evento-item-label">Data</span>
+          <span class="evento-item-valor" data-bind="dataFormatada">—</span>
+        </div>
+        <div class="evento-item">
+          <span class="evento-item-label">Horário</span>
+          <span class="evento-item-valor" data-bind="horario">—</span>
+        </div>
+        <a class="evento-item evento-item-map" data-bind-href="localMapUrl" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="evento-item-label">Local <span class="evento-map-icon" aria-hidden="true">↗</span></span>
+          <span class="evento-item-valor" data-bind="local">—</span>
+        </a>
+        <div class="evento-item">
+          <span class="evento-item-label" data-bind="labelVagas">Vagas restantes</span>
+          <span class="evento-item-valor evento-vagas" data-bind="vagasTexto">—</span>
+        </div>
       </div>
-      <div class="turma-detalhe">
-        <span class="turma-detalhe-label">Horário</span>
-        <span class="turma-detalhe-valor" data-bind="horario">—</span>
+
+      <div class="countdown-big" id="countdown">
+        <div class="cd-box">
+          <span class="cd-num" id="cd-dias">—</span>
+          <span class="cd-label">dias</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-box">
+          <span class="cd-num" id="cd-horas">—</span>
+          <span class="cd-label">horas</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-box">
+          <span class="cd-num" id="cd-min">—</span>
+          <span class="cd-label">min</span>
+        </div>
+        <span class="cd-sep" aria-hidden="true">:</span>
+        <div class="cd-box">
+          <span class="cd-num" id="cd-seg">—</span>
+          <span class="cd-label">seg</span>
+        </div>
       </div>
-      <div class="turma-detalhe">
-        <span class="turma-detalhe-label">Local</span>
-        <span class="turma-detalhe-valor" data-bind="local">—</span>
-      </div>
-      <div class="turma-detalhe turma-detalhe-vagas">
-        <span class="turma-detalhe-label" data-bind="labelVagas">Vagas restantes</span>
-        <span class="turma-detalhe-valor turma-detalhe-vagas-num" data-bind="vagasTexto">—</span>
-      </div>
-      <div class="turma-detalhe turma-detalhe-deadline">
-        <span class="turma-detalhe-label">Inscrições até</span>
-        <span class="turma-detalhe-valor" data-bind="deadlineFormatada">—</span>
+
+      <div class="evento-garantia">
+        <span class="evento-garantia-icon" aria-hidden="true">✓</span>
+        <p>Garantia de risco zero — se for mais teórico que prático, devolvemos o valor na hora.</p>
       </div>
     </div>
 
-    <!-- Countdown timer -->
-    <div class="countdown" id="countdown">
-      <div class="countdown-item">
-        <span class="countdown-value" id="cd-dias">—</span>
-        <span class="countdown-label">dias</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value" id="cd-horas">—</span>
-        <span class="countdown-label">horas</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value" id="cd-min">—</span>
-        <span class="countdown-label">min</span>
-      </div>
-      <div class="countdown-item">
-        <span class="countdown-value" id="cd-seg">—</span>
-        <span class="countdown-label">seg</span>
+    <!-- COLUNA DIREITA: formulário -->
+    <div class="inscricao-form-card">
+      <form class="form-inscricao" id="form-inscricao" novalidate>
+        <div style="display:none !important" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-2col">
+          <div class="form-row">
+            <label for="f-nome">Nome completo</label>
+            <input type="text" id="f-nome" name="nome" required autocomplete="name">
+          </div>
+          <div class="form-row">
+            <label for="f-empresa">Empresa</label>
+            <input type="text" id="f-empresa" name="empresa" required autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="form-2col">
+          <div class="form-row">
+            <label for="f-cargo">Cargo</label>
+            <input type="text" id="f-cargo" name="cargo" required autocomplete="organization-title">
+          </div>
+          <div class="form-row">
+            <label for="f-whatsapp">WhatsApp</label>
+            <input type="tel" id="f-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="(11) 91234-5678">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-row">
+          <label for="f-gargalo">Qual processo você quer resolver com IA?</label>
+          <textarea id="f-gargalo" name="gargalo" rows="3" required placeholder="Ex: análise de balanços, conciliação financeira, triagem de candidatos, relatórios operacionais..."></textarea>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+        <label class="form-lgpd">
+          <input type="checkbox" required>
+          <span>Concordo em receber contato sobre a imersão e estou ciente da <a href="#privacidade" style="color:var(--cyan-label);text-decoration:underline">Política de Privacidade</a></span>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+          <span data-bind="ctaInscricaoTexto">Garantir minha vaga</span>
+        </button>
+        <p class="form-disclaimer">Nosso time entra em contato pelo WhatsApp em até 24h úteis. A conversa define se faz sentido avançar.</p>
+      </form>
+
+      <div class="form-success" id="form-success" hidden>
+        <span class="form-success-icon" aria-hidden="true">✓</span>
+        <h3>Recebemos sua solicitação.</h3>
+        <p>Carlos entra em contato pelo WhatsApp em breve para alinhar e confirmar sua vaga.</p>
       </div>
     </div>
 
-    <form class="form-inscricao" id="form-inscricao" novalidate>
-      <!-- Honeypot anti-spam -->
-      <div style="display:none !important" aria-hidden="true">
-        <input type="text" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <div class="form-row">
-        <label for="f-nome">Nome completo</label>
-        <input type="text" id="f-nome" name="nome" required autocomplete="name">
-      </div>
-      <div class="form-row">
-        <label for="f-empresa">Empresa</label>
-        <input type="text" id="f-empresa" name="empresa" required autocomplete="organization">
-      </div>
-      <div class="form-row">
-        <label for="f-cargo">Cargo</label>
-        <input type="text" id="f-cargo" name="cargo" required autocomplete="organization-title">
-      </div>
-      <div class="form-row">
-        <label for="f-whatsapp">WhatsApp</label>
-        <input type="tel" id="f-whatsapp" name="whatsapp" required autocomplete="tel" placeholder="(11) 91234-5678">
-      </div>
-      <div class="form-row">
-        <label for="f-email">E-mail</label>
-        <input type="email" id="f-email" name="email" required autocomplete="email">
-      </div>
-      <div class="form-row">
-        <label for="f-gargalo">Qual o maior gargalo da sua operação hoje?</label>
-        <textarea id="f-gargalo" name="gargalo" rows="3" required placeholder="Ex: processos manuais no financeiro, triagem de currículos, conferência de notas fiscais..."></textarea>
-      </div>
-
-      <p class="form-error" id="form-error" role="alert" hidden></p>
-
-      <label class="form-lgpd">
-        <input type="checkbox" required>
-        <span>Concordo em receber contato sobre a imersão e estou ciente da <a href="#privacidade" style="color:var(--cyan-label);text-decoration:underline">Política de Privacidade</a></span>
-      </label>
-
-      <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
-        <span data-bind="ctaInscricaoTexto">Garantir minha vaga</span>
-      </button>
-      <p class="form-disclaimer">Nosso time comercial entra em contato pelo WhatsApp em até 24h úteis.</p>
-    </form>
-
-    <div class="form-success" id="form-success" hidden>
-      <span class="form-success-icon" aria-hidden="true">✓</span>
-      <h3>Recebemos sua inscrição.</h3>
-      <p>Nosso time comercial entra em contato pelo WhatsApp em breve para confirmar sua vaga.</p>
-    </div>
   </div>
 </section>
 
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
+<!-- FAQ -->
 <section class="section section-faq reveal">
   <div class="container container-narrow">
-    <p class="section-label">Perguntas frequentes</p>
-    <h2 class="section-title">Antes de garantir sua vaga</h2>
+    <p class="section-label">Dúvidas frequentes</p>
+    <h2 class="section-title">Perguntas que todo executivo faz antes de decidir</h2>
 
     <div class="faq-list">
       <details class="faq-item">
-        <summary>Preciso saber programar ou ter conhecimento técnico de IA?</summary>
-        <p>Não. A imersão é desenhada para C-Levels sem background técnico. Você constrói seu Assistente Digital direto no ChatGPT, Claude ou Gemini — sem código, sem TI, sem integrações externas.</p>
+        <summary>Preciso ter conhecimento técnico de IA?</summary>
+        <p>Não. A imersão é construída para quem decide — não para quem desenvolve. Você trabalha com seu processo real sem escrever uma linha de código, sem depender de TI.</p>
       </details>
       <details class="faq-item">
-        <summary>O que eu preciso trazer?</summary>
-        <p>Traga um gargalo real da sua operação — algo que hoje consome tempo do seu time em planilhas, conferências ou processos manuais. A imersão é calibrada nessa dor desde a pré-entrevista.</p>
+        <summary>O que exatamente eu construo no dia?</summary>
+        <p>Um Assistente Digital calibrado para uma dor real da sua operação. Você escolhe o processo antes do dia — a B2H4 chega preparada para o seu contexto. Na saída, está testado e pronto para rodar.</p>
       </details>
       <details class="faq-item">
-        <summary>É só teoria ou eu realmente construo algo?</summary>
-        <p>Você constrói. Ao final das 4h, sai com um Assistente Digital próprio funcionando, um Checklist Go/No-Go de Governança e um Plano de 90 dias. Se a imersão for mais teórica do que prática, devolvemos o investimento.</p>
+        <summary>Como eu calculo o retorno sobre R$ 2.500?</summary>
+        <p>Um processo com 200 ocorrências/mês e 2h cada, a R$ 80/h, custa R$ 32k/mês. Uma automação que assume 60% desse trabalho representa R$ 19k/mês de economia — pagback em menos de uma semana. O número real é calibrado no diagnóstico, e a B2H4 tem calculadora de ROI no site institucional para você montar a conta com os seus parâmetros.</p>
       </details>
       <details class="faq-item">
         <summary>O que acontece depois da imersão?</summary>
-        <p>Você decide o ritmo. Pode seguir pelo Follow-up Estratégico (7 dias depois) e Discovery de Projeto, onde a B2H4 desenha e assume a operação do seu processo. 100% do valor da imersão entra como crédito nessas próximas etapas.</p>
+        <p>A imersão é a entrada. A operação contínua é o destino. Você pode seguir pela trilha Standard (um projeto prioritário, do início ao fim) ou Modular (múltiplas frentes, à la carte). Follow-up e Discovery viram crédito de 100% no projeto final.</p>
       </details>
       <details class="faq-item">
-        <summary>Por que só até 12 participantes?</summary>
-        <p>Porque cada Assistente Digital é calibrado individualmente, na sua dor real. Turmas grandes virariam aula teórica — e a imersão é hands-on por desenho.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Como funciona a garantia?</summary>
-        <p>Garantia de risco zero: se você sentir que a imersão foi mais teórica do que prática, devolvemos o valor investido. Sem letra pequena. Basta nos dizer até 24h após o evento.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Funciona para a minha indústria?</summary>
-        <p>Sim. A imersão é calibrada na sua dor real — não é um curso genérico. CEOs de fintechs, indústrias, escritórios de advocacia, logística e saúde já participaram. O método é universal; o caso de uso é o seu.</p>
-      </details>
-      <details class="faq-item">
-        <summary>E se eu não tiver nenhum conhecimento técnico?</summary>
-        <p>Perfeitamente. A imersão é desenhada para C-Levels sem background técnico. Você usa ChatGPT, Claude ou Gemini como interface — sem código, sem planilhas complexas, sem TI.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Quanto tempo por dia preciso dedicar depois da imersão?</summary>
-        <p>Nenhum. O Assistente Digital que você constrói na imersão é autônomo. O Follow-up Estratégico (7 dias depois) é opcional e leva ~1h. Depois disso, o assistente opera sozinho.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Posso trazer mais de uma pessoa da mesma empresa?</summary>
-        <p>Sim. Recomendamos até 3 pessoas por empresa para garantir qualidade da experiência. Cada um constrói seu próprio Assistente Digital, calibrado em sua área.</p>
-      </details>
-      <details class="faq-item">
-        <summary>O assistente continua funcionando depois?</summary>
-        <p>Sim. O Assistente Digital que você constrói é seu. Ele continua funcionando após a imersão. Se quiser evoluir com a B2H4, o Follow-up Estratégico e Discovery entram como próximos passos.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Qual o formato do pagamento?</summary>
-        <p>PIX, boleto ou cartão de crédito. Parcelamos em até 3x sem juros. 100% do valor vira crédito no Follow-up Estratégico se você seguir para a próxima etapa.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Estacionamento e coffee-break estão inclusos?</summary>
-        <p>Sim. Coffee-break incluso. Estacionamento disponível no local (a confirmar endereço na inscrição).</p>
+        <summary>Qual é a garantia?</summary>
+        <p>Risco zero: se a imersão for mais teórica do que prática, devolvemos o valor na hora. Sem letra pequena. É o compromisso com o resultado, não com a presença.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     POLÍTICA DE PRIVACIDADE
-     ============================================================ -->
-<section class="section section-privacidade" id="privacidade">
+<!-- PRIVACIDADE -->
+<section class="section section-privacidade" id="privacidade" style="padding:48px 0">
   <div class="container container-narrow">
     <p class="section-label">Privacidade</p>
-    <h2 class="section-title">Política de Privacidade</h2>
     <div class="privacidade-content">
       <h3>Coleta de dados</h3>
-      <p>Coletamos apenas os dados fornecidos voluntariamente no formulário de inscrição: nome, empresa, cargo, WhatsApp, e-mail e descrição do gargalo operacional. Não coletamos dados sensíveis (saúde, biometria, orientação sexual, etc.).</p>
-
-      <h3>Finalidade</h3>
-      <p>Os dados são utilizados exclusivamente para: (a) contato comercial sobre a imersão, (b) personalização da experiência durante o evento, (c) envio de materiais pós-evento. Não vendemos nem compartilhamos dados com terceiros.</p>
-
-      <h3>Base legal</h3>
-      <p>Tratamos dados com base no consentimento (art. 7º da LGPD) e legítimo interesse (art. 9º) para execução do contrato de participação.</p>
-
-      <h3>Retenção</h3>
-      <p>Dados são mantidos por até 24 meses após a última interação, conforme art. 16 da LGPD. Após esse período, são excluídos ou anonimizados.</p>
-
+      <p>Coletamos apenas os dados fornecidos no formulário: nome, empresa, cargo, WhatsApp, e-mail e descrição do processo. Usados exclusivamente para contato sobre a imersão. LGPD · conformidade Brasil · AES-256.</p>
       <h3>Direitos do titular</h3>
-      <p>Você pode solicitar acesso, correção ou exclusão dos seus dados a qualquer momento através de <a href="mailto:contato@b2h4.ai" style="color:var(--cyan-label);text-decoration:underline">contato@b2h4.ai</a>.</p>
-
-      <h3>Cookies e rastreamento</h3>
-      <p>Utilizamos Plausible Analytics para monitorar tráfego de forma anonimizada. Não utilizamos cookies de rastreamento publicitário.</p>
+      <p>Acesso, correção ou exclusão dos dados a qualquer momento: <a href="mailto:contato@b2h4.ai" style="color:var(--cyan-label);text-decoration:underline">contato@b2h4.ai</a></p>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     CTA FINAL + RODAPÉ
-     ============================================================ -->
+<!-- CTA FINAL -->
 <section class="section section-cta-final">
   <div class="container container-narrow">
-    <h2 class="cta-final-title">A IA já está na sua empresa.<br>Falta colocá-la pra operar.</h2>
+    <h2 class="cta-final-title">Vamos colocar um processo seu pra rodar?</h2>
     <a href="#inscricao" class="btn btn-primary btn-large">Garantir minha vaga</a>
   </div>
 </section>
@@ -757,14 +459,17 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <span class="logo-text">B2H4</span>
+      <img src="logo-b2h4-branco.webp" alt="B2H4" style="height:22px;width:auto;opacity:0.9;margin-bottom:6px">
       <p>Business to Human Intelligence · BPO Agentic</p>
     </div>
     <div class="footer-selos">
       <span class="selo">LGPD</span>
       <span class="selo">AES-256</span>
     </div>
-    <p class="footer-contato">Prefere falar direto? <a href="mailto:contato@b2h4.ai" style="text-decoration:underline">contato@b2h4.ai</a></p>
+    <p class="footer-contato">
+      <a href="mailto:contato@b2h4.ai">contato@b2h4.ai</a> ·
+      <a href="https://wa.me/5511973599710" target="_blank" rel="noopener">WhatsApp +55 11 97359-9710</a>
+    </p>
   </div>
 </footer>
 
@@ -774,5 +479,6 @@
 </a>
 
 <script src="app.js"></script>
+<script src="lp-assets/logo-3d-init.js"></script>
 </body>
 </html>

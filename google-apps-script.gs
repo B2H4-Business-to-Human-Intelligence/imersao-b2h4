@@ -1,6 +1,7 @@
 /* ============================================================
    GOOGLE APPS SCRIPT — recebe as inscrições da landing page
    e grava como nova linha numa planilha Google Sheets.
+   Também serve a contagem ao vivo de vagas via GET.
 
    COMO INSTALAR (faça isso UMA VEZ SÓ, não muda a cada turma):
 
@@ -40,6 +41,9 @@
    a mudança valer — só salvar o código não atualiza a URL já em uso.
    ============================================================ */
 
+/* ----------------------------------------------------------
+   POST — recebe inscrição e grava na planilha
+   ---------------------------------------------------------- */
 function doPost(e) {
   try {
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -60,6 +64,44 @@ function doPost(e) {
 
     return ContentService
       .createTextOutput(JSON.stringify({ ok: true }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, error: err.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/* ----------------------------------------------------------
+   GET — retorna contagem de inscrições para a turma solicitada.
+
+   A landing page chama: GET <webhookUrl>?turma=2026-07-24
+   O parâmetro "turma" filtra pela coluna H (turmaData),
+   então a contagem reseta automaticamente a cada nova turma.
+   Se "turma" não for enviado, retorna o total geral.
+   ---------------------------------------------------------- */
+function doGet(e) {
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const turmaFiltro = (e && e.parameter && e.parameter.turma) ? e.parameter.turma : "";
+
+    let count = 0;
+
+    if (turmaFiltro) {
+      const rows = sheet.getDataRange().getValues();
+      // Linha 0 é o cabeçalho — pula. Coluna H = índice 7.
+      for (var i = 1; i < rows.length; i++) {
+        if (String(rows[i][7]).trim() === turmaFiltro.trim()) {
+          count++;
+        }
+      }
+    } else {
+      count = Math.max(0, sheet.getLastRow() - 1);
+    }
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: true, inscricoes: count }))
       .setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {

@@ -27,13 +27,17 @@ window.TURMA_CONFIG = {
   // 2. DATA E LOCAL
   // -----------------------------------------------------------
   // Formato da data: "AAAA-MM-DD" (ano-mês-dia). Exemplo: 15 de agosto de 2026 = "2026-08-15"
-  data: "2026-08-15",
+  data: "2026-07-24",
 
   // Horário, como texto livre (aparece exatamente como você escrever)
-  horario: "9h às 13h",
+  horario: "13h às 18h",
 
   // Local, como texto livre
-  local: "São Paulo, SP — endereço enviado após inscrição",
+  local: "Pobre Juan Morumbi · São Paulo, SP",
+
+  // URL do Google Maps para o local (aparece ao clicar no campo "Local")
+  // Deixe "" para desativar o link
+  localMapUrl: "https://maps.google.com/?q=Pobre+Juan+Morumbi+São+Paulo",
 
   // -----------------------------------------------------------
   // 3. VAGAS
@@ -41,24 +45,25 @@ window.TURMA_CONFIG = {
   // Total de vagas da turma (a imersão é desenhada para até 12)
   vagasTotais: 12,
 
-  // Quantas vagas JÁ FORAM PREENCHIDAS até agora
-  // (o site calcula "vagas restantes" sozinho: vagasTotais - vagasPreenchidas)
-  vagasPreenchidas: 7,
+  // Valor de fallback — exibido enquanto o site busca a contagem real.
+  // Quando o webhookUrl estiver configurado, o site busca automaticamente
+  // quantas linhas existem na planilha para esta turma (filtrando por data)
+  // e atualiza este número ao carregar a página. Você não precisa mais
+  // editar este campo manualmente — mas pode deixar um valor razoável
+  // aqui caso o Sheets esteja fora do ar.
+  vagasPreenchidas: 0,
 
   // -----------------------------------------------------------
   // 4. PREÇO
   // -----------------------------------------------------------
   // Preço da turma. Escreva como texto, já formatado em R$.
-  preco: "R$ 4.900",
-
-  // Preço "de" (ancoragem), se houver desconto. Deixe "" (vazio) se não houver.
-  precoAncora: "",
+  preco: "R$ 2.500",
 
   // -----------------------------------------------------------
   // 5. PRAZO DE INSCRIÇÃO
   // -----------------------------------------------------------
   // Data limite para se inscrever nesta turma (mesmo formato AAAA-MM-DD)
-  deadlineInscricao: "2026-08-10",
+  deadlineInscricao: "2026-07-20",
 
   // -----------------------------------------------------------
   // 6. ENVIO DO FORMULÁRIO (Google Sheets)
@@ -67,7 +72,7 @@ window.TURMA_CONFIG = {
   // Veja o GUIA-ATUALIZACAO.md, seção "Como configurar o Google Sheets",
   // para o passo a passo de como gerar essa URL (é feito uma vez só,
   // não muda a cada turma).
-  webhookUrl: "COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT",
+  webhookUrl: "https://script.google.com/macros/s/AKfycbxxKxWFbt2IATfZmVnTxdjQwmuKbtOO8nwCFAUKek0IM_5o-EVSjT6ruJEW5Y0sqbEy/exec",
 
   // -----------------------------------------------------------
   // 7. DEPOIMENTOS
