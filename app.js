@@ -55,9 +55,9 @@
       tituloInscricaoSecao = "Quero ser avisado da próxima turma.";
       labelInscricaoSecao = "Próxima turma";
     } else {
-      vagasTexto = "vagas limitadas";
-      labelVagas = "Vagas";
-      vagasTextoCurto = "vagas limitadas";
+      vagasTexto = "Sujeito a aprovação";
+      labelVagas = "Vagas Limitadas";
+      vagasTextoCurto = "Vagas limitadas";
       ctaInscricaoTexto = "Garantir minha vaga";
       tituloInscricaoSecao = "Garanta sua vaga na imersão.";
       labelInscricaoSecao = "Próxima turma";
