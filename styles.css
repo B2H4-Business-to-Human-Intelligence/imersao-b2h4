@@ -328,9 +328,9 @@ a.turma-live-item-map:hover .turma-live-value {
   color: var(--white);
 }
 
-.turma-live-vagas-num { color: var(--cyan-bright); }
-.turma-live-label--vagas { color: var(--cyan-bright); }
-.evento-item-label--vagas { color: var(--cyan-bright); }
+.turma-live-vagas-num { color: var(--cyan-bright); font-size: .82rem; font-weight: 400; }
+.turma-live-label--vagas { color: var(--cyan-bright); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
+.evento-item-label--vagas { color: var(--cyan-bright); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
 
 .turma-progress-track {
   width: 100%;
