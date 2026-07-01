@@ -55,9 +55,9 @@
       tituloInscricaoSecao = "Quero ser avisado da próxima turma.";
       labelInscricaoSecao = "Próxima turma";
     } else {
-      vagasTexto = `${restantes} de ${cfg.vagasTotais}`;
-      labelVagas = "Vagas restantes";
-      vagasTextoCurto = `${restantes} vagas`;
+      vagasTexto = "vagas limitadas";
+      labelVagas = "Vagas";
+      vagasTextoCurto = "vagas limitadas";
       ctaInscricaoTexto = "Garantir minha vaga";
       tituloInscricaoSecao = "Garanta sua vaga na imersão.";
       labelInscricaoSecao = "Próxima turma";
