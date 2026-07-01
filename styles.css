@@ -330,7 +330,7 @@ a.turma-live-item-map:hover .turma-live-value {
 
 .turma-live-vagas-num { color: var(--cyan-bright); font-size: .82rem; font-weight: 400; }
 .turma-live-label--vagas { color: var(--cyan-bright); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
-.evento-item-label--vagas { color: var(--cyan-bright); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
+.evento-item-label--vagas { color: var(--cyan-bright); font-size: 1rem; font-weight: 700; letter-spacing: .04em; text-transform: none; }
 
 .turma-progress-track {
   width: 100%;
@@ -552,7 +552,8 @@ a.turma-live-item-map:hover .turma-live-value {
 
 .evento-vagas {
   color: var(--cyan-bright);
-  font-size: 1.1rem;
+  font-size: .82rem;
+  font-weight: 400;
 }
 
 a.evento-item-map {
