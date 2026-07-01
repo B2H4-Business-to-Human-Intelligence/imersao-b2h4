@@ -329,6 +329,8 @@ a.turma-live-item-map:hover .turma-live-value {
 }
 
 .turma-live-vagas-num { color: var(--cyan-bright); }
+.turma-live-label--vagas { color: var(--cyan-bright); }
+.evento-item-label--vagas { color: var(--cyan-bright); }
 
 .turma-progress-track {
   width: 100%;
